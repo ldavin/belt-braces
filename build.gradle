@@ -1,4 +1,5 @@
 apply plugin: 'kotlin'
+apply plugin: 'jacoco'
 
 group 'io.ldavin'
 version '1.0-SNAPSHOT'
@@ -24,7 +25,5 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.2.9'
-    testCompile 'org.hamcrest:hamcrest-junit:2.0.0.0'
     testCompile 'org.assertj:assertj-core:2.4.1'
 }

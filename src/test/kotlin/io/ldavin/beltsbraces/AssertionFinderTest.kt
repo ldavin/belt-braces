@@ -10,7 +10,6 @@ class AssertionFinderTest {
     @Test
     fun `Finder should return an empty list for an empty java class`() {
         // GIVEN
-
         val finder = AssertionFinder()
         val subject = JEmpty()
 
@@ -24,7 +23,6 @@ class AssertionFinderTest {
     @Test
     fun `Finder should return one string equality assertion for a kotlin class`() {
         // GIVEN
-
         val finder = AssertionFinder()
         val subject = KStringMember("value")
 
@@ -39,7 +37,6 @@ class AssertionFinderTest {
     @Test
     fun `Finder should return one string equality assertion for a java class`() {
         // GIVEN
-
         val finder = AssertionFinder()
         val subject = JStringMember("value")
 
@@ -54,10 +51,8 @@ class AssertionFinderTest {
     @Test
     fun `Finder should return all primitive equality assertions for java class`() {
         // GIVEN
-
         val finder = AssertionFinder()
         val subject = JPrimitiveMembers(-1, -2, -3, -4, 1.1f, 1.2, true, 'd')
-
 
         // WHEN
         val result = finder.analyse(subject)
