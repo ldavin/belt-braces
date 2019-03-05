@@ -1,7 +1,7 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
-import io.ldavin.beltsbraces.exception.FastenYourSeatBeltException
-import io.ldavin.beltsbraces.exception.NoAssertionFoundException
+import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
+import io.ldavin.beltbraces.exception.NoAssertionFoundException
 
 class AssertionWriter {
 

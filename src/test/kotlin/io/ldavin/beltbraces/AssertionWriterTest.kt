@@ -1,6 +1,6 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
-import io.ldavin.beltsbraces.exception.NoAssertionFoundException
+import io.ldavin.beltbraces.exception.NoAssertionFoundException
 import org.junit.Test
 
 class AssertionWriterTest {

@@ -1,12 +1,12 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
-import io.ldavin.beltsbraces.exception.FastenYourSeatBeltException
-import io.ldavin.beltsbraces.exception.NoAssertionFoundException
-import io.ldavin.beltsbraces.fixture.JEmpty
+import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
+import io.ldavin.beltbraces.exception.NoAssertionFoundException
+import io.ldavin.beltbraces.fixture.JEmpty
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class BeltsTest {
+class BeltTest {
 
     @Test
     fun `Integration test with a simple class`() {
@@ -16,7 +16,7 @@ class BeltsTest {
         // WHEN
         var catched: FastenYourSeatBeltException? = null
         try {
-            BeltsAndBraces.fasten(testObject)
+            BeltAndBraces.fasten(testObject)
         } catch(e: FastenYourSeatBeltException) {
             catched = e
         }
@@ -32,7 +32,7 @@ class BeltsTest {
         val testObject = JEmpty()
 
         // WHEN
-        BeltsAndBraces.fasten(testObject)
+        BeltAndBraces.fasten(testObject)
     }
 
     data class TestClass(val attribute: String)

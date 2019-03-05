@@ -1,4 +1,4 @@
-package io.ldavin.beltsbraces.exception
+package io.ldavin.beltbraces.exception
 
 class NoAssertionFoundException : Exception() {
     override val message: String?

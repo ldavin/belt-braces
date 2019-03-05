@@ -1,7 +1,7 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
-import io.ldavin.beltsbraces.Assertion.Type.EQUALITY
-import io.ldavin.beltsbraces.fixture.*
+import io.ldavin.beltbraces.Assertion.Type.EQUALITY
+import io.ldavin.beltbraces.fixture.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
 class AssertionTransformer {
 

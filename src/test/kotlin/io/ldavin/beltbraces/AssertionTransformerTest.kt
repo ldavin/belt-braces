@@ -1,4 +1,4 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test

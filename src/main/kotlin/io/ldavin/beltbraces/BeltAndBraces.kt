@@ -1,8 +1,8 @@
-package io.ldavin.beltsbraces
+package io.ldavin.beltbraces
 
-import io.ldavin.beltsbraces.exception.FastenYourSeatBeltException
+import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
 
-object BeltsAndBraces {
+object BeltAndBraces {
 
     private val finder = AssertionFinder()
     private val writer = AssertionWriter()

@@ -1,4 +1,4 @@
-package io.ldavin.beltsbraces.fixture;
+package io.ldavin.beltbraces.fixture;
 
 public class JStringMember {
 

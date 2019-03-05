@@ -1,3 +1,3 @@
-package io.ldavin.beltsbraces.fixture
+package io.ldavin.beltbraces.fixture
 
 data class KStringMember(val mercury: String)
