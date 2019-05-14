@@ -1,25 +1,30 @@
 package io.ldavin.beltbraces
 
-import com.googlecode.catchexception.CatchException
 import com.googlecode.catchexception.CatchException.catchException
 import io.ldavin.beltbraces.exception.NoAssertionFoundException
 import io.ldavin.beltbraces.fixture.JEmpty
 import io.ldavin.beltbraces.fixture.JStringMember
 import io.ldavin.beltbraces.fixture.JStringMemberOverridingEquals
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
 
-class BeltTest {
+class BeltTestJava {
 
     /*
-     *  Integration tests of the library with its default setting (called from Kotlin code)
+     *  Integration tests of the library with its Java setting
      *  whether checking on Kotlin or Java classes
      */
 
+    @Before
+    fun setUp() {
+        BeltAndBraces.language = BeltAndBraces.Language.JAVA
+    }
+
     @Ignore
     @Test
-    fun `BeltAndBraces should suggest an object equality assertion for a kotlin data class`() {
+    fun `BeltAndBraces Java should suggest an object equality assertion for a kotlin data class`() {
         data class SubjectClass(val attribute: String)
 
         // GIVEN
@@ -32,17 +37,17 @@ class BeltTest {
         val excerpts = listOf(
             "The object to check appears to be a Kotlin data class!",
             "Object equality style (preferred):",
-            """val expected = SubjectClass("Hi!")""",
-            "assertThat(result).isEqualTo(expected)",
+            """SubjectClass expected = new SubjectClass("Hi!");""",
+            "assertThat(result).isEqualTo(expected);",
             "If you prefer to assert it property-style:",
-            """assertThat(result.attribute).isEqualTo("Hi!")"""
+            """assertThat(result.getAttribute()).isEqualTo("Hi!");"""
         )
         assertThat(caughtException().message).containsSequence(excerpts)
     }
 
     @Ignore
     @Test
-    fun `BeltAndBraces should suggest an object equality assertion with named arguments for a large kotlin data class`() {
+    fun `BeltAndBraces Java should suggest an object equality assertion for a large kotlin data class`() {
         data class SubjectClass(val mercury: String, val venus: String, val earth: String, val mars: String)
 
         // GIVEN
@@ -55,25 +60,25 @@ class BeltTest {
         val excerpts = listOf(
             "The object to check appears to be a Kotlin data class!",
             "Object equality style (preferred):",
-            "val expected = SubjectClass(",
-            """mercury = "Hot!",""",
-            """venus = "Also hot",""",
-            """earth = "Nice",""",
-            """mars = "Red"""",
-            ")",
-            "assertThat(result).isEqualTo(expected)",
+            "SubjectClass expected = new SubjectClass(",
+            """"Hot!",""",
+            """"Also hot",""",
+            """"Nice",""",
+            """"Red"""",
+            ");",
+            "assertThat(result).isEqualTo(expected);",
             "If you prefer to assert it property-style:",
-            """assertThat(result.mercury).isEqualTo("Hot!")""",
-            """assertThat(result.venus).isEqualTo("Also hot")""",
-            """assertThat(result.earth).isEqualTo("Nice")""",
-            """assertThat(result.mars).isEqualTo("Red")"""
+            """assertThat(result.getMercury()).isEqualTo("Hot!");""",
+            """assertThat(result.getVenus()).isEqualTo("Also hot");""",
+            """assertThat(result.getEarth()).isEqualTo("Nice");""",
+            """assertThat(result.getMars()).isEqualTo("Red");"""
         )
         assertThat(caughtException().message).containsSequence(excerpts)
     }
 
     @Ignore
     @Test
-    fun `BeltAndBraces should suggest an object equality assertion for a kotlin class overriding equals`() {
+    fun `BeltAndBraces Java should suggest an object equality assertion for a kotlin class overriding equals`() {
         class SubjectClass(val attribute: String) {
             override fun equals(other: Any?): Boolean {
                 if (this === other) return true
@@ -98,17 +103,17 @@ class BeltTest {
         val excerpts = listOf(
             "The object to check appears to implement the `equals()` method!",
             "If the `equals()` implementation is correct, assert it object-style (preferred):",
-            """val expected = SubjectClass("Trop bien !")""",
-            "assertThat(result).isEqualTo(expected)",
+            """SubjectClass expected = new SubjectClass("Trop bien !");""",
+            "assertThat(result).isEqualTo(expected);",
             "If you prefer to assert it property-style:",
-            """assertThat(result.attribute).isEqualTo("Trop bien !")"""
+            """assertThat(result.getAttribute()).isEqualTo("Trop bien !");"""
         )
         assertThat(caughtException().message).containsSequence(excerpts)
     }
 
     @Ignore
     @Test
-    fun `BeltAndBraces should suggest an object equality assertion for a java class overriding equals`() {
+    fun `BeltAndBraces Java should suggest an object equality assertion for a java class overriding equals`() {
         // GIVEN
         val testObject = JStringMemberOverridingEquals("Super !")
 
@@ -119,17 +124,17 @@ class BeltTest {
         val excerpts = listOf(
             "The object to check appears to implement the `equals()` method!",
             "If the `equals()` implementation is correct, assert it object-style (preferred):",
-            """val expected = JStringMemberOverridingEquals("Super !")""",
-            "assertThat(result).isEqualTo(expected)",
+            """JStringMemberOverridingEquals expected = new JStringMemberOverridingEquals("Super !");""",
+            "assertThat(result).isEqualTo(expected);",
             "If you prefer to assert it property-style:",
-            """assertThat(result.attribute).isEqualTo("Super !")"""
+            """assertThat(result.getAttribute()).isEqualTo("Super !");"""
         )
         assertThat(caughtException().message).containsSequence(excerpts)
     }
 
     @Ignore
     @Test
-    fun `BeltAndBraces should suggest property equality assertions for a kotlin class`() {
+    fun `BeltAndBraces Java should suggest property equality assertions for a kotlin class`() {
         class SubjectClass(val attribute: String)
 
         // GIVEN
@@ -141,14 +146,14 @@ class BeltTest {
         // THEN
         val excerpts = listOf(
             "The object does not override `equals()` so it has to be checked field by field:",
-            """assertThat(result.attribute).isEqualTo("C't'incroyaaable")"""
+            """assertThat(result.getAttribute()).isEqualTo("C't'incroyaaable");"""
         )
         assertThat(caughtException().message).containsSequence(excerpts)
     }
 
     @Ignore
     @Test
-    fun `BeltAndBraces should suggest property equality assertions for a java class`() {
+    fun `BeltAndBraces Java should suggest property equality assertions for a java class`() {
         // GIVEN
         val testObject = JStringMember("Ça m'fais bouger un tabernaacle")
 
@@ -158,13 +163,13 @@ class BeltTest {
         // THEN
         val excerpts = listOf(
             "The object does not override `equals()` so it has to be checked field by field:",
-            """assertThat(result.mercury).isEqualTo("Ça m'fais bouger un tabernaacle")"""
+            """assertThat(result.getMercury()).isEqualTo("Ça m'fais bouger un tabernaacle");"""
         )
         assertThat(caughtException().message).containsSequence(excerpts)
     }
 
     @Test
-    fun `BeltAndBraces should find nothing to assert on an empty kotlin class`() {
+    fun `BeltAndBraces Java should find nothing to assert on an empty kotlin class`() {
         class EmptyClass
 
         // GIVEN
@@ -178,7 +183,7 @@ class BeltTest {
     }
 
     @Test
-    fun `BeltAndBraces should find nothing to assert on an empty java class`() {
+    fun `BeltAndBraces Java should find nothing to assert on an empty java class`() {
         // GIVEN
         val testObject = JEmpty()
 
@@ -190,5 +195,3 @@ class BeltTest {
     }
 
 }
-
-fun caughtException(): Exception = CatchException.caughtException()
