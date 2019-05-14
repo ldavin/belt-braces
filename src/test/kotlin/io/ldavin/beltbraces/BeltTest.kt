@@ -1,6 +1,7 @@
 package io.ldavin.beltbraces
 
-import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
+import com.googlecode.catchexception.CatchException
+import com.googlecode.catchexception.CatchException.catchException
 import io.ldavin.beltbraces.exception.NoAssertionFoundException
 import io.ldavin.beltbraces.fixture.JEmpty
 import org.assertj.core.api.Assertions.assertThat
@@ -14,26 +15,28 @@ class BeltTest {
         val testObject = TestClass("Hi!")
 
         // WHEN
-        var catched: FastenYourSeatBeltException? = null
-        try {
-            BeltAndBraces.fasten(testObject)
-        } catch(e: FastenYourSeatBeltException) {
-            catched = e
-        }
+        catchException { BeltAndBraces.fasten(testObject) }
 
         // THEN
-        assertThat(catched!!.message).hasLineCount(3)
-        assertThat(catched.message).contains("assertThat(result.getAttribute()).isEqualTo(\"Hi!\")")
+        val caughtException = caughtException()
+        assertThat(caughtException.message).hasLineCount(3)
+        assertThat(caughtException.message).contains("assertThat(result.getAttribute()).isEqualTo(\"Hi!\")")
     }
 
-    @Test(expected = NoAssertionFoundException::class)
+    @Test
     fun `Integration test with an empty class`() {
         // GIVEN
         val testObject = JEmpty()
 
         // WHEN
-        BeltAndBraces.fasten(testObject)
+        catchException { BeltAndBraces.fasten(testObject) }
+
+        // THEN
+        assertThat(caughtException())
+            .isExactlyInstanceOf(NoAssertionFoundException::class.java)
     }
 
     data class TestClass(val attribute: String)
 }
+
+fun caughtException(): Exception = CatchException.caughtException()
