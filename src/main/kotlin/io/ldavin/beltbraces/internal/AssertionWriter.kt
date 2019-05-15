@@ -1,4 +1,4 @@
-package io.ldavin.beltbraces
+package io.ldavin.beltbraces.internal
 
 import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
 import io.ldavin.beltbraces.exception.NoAssertionFoundException

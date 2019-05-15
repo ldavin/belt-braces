@@ -1,6 +1,7 @@
-package io.ldavin.beltbraces
+package io.ldavin.beltbraces.internal
 
 import com.googlecode.catchexception.CatchException.catchException
+import io.ldavin.beltbraces.caughtException
 import io.ldavin.beltbraces.exception.NoAssertionFoundException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test

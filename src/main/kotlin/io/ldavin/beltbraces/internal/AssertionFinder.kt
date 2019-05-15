@@ -1,4 +1,4 @@
-package io.ldavin.beltbraces
+package io.ldavin.beltbraces.internal
 
 import java.lang.reflect.Method
 
@@ -11,11 +11,13 @@ class AssertionFinder {
         val members = subject.javaClass.methods
         val equalityMembers = members.filter { it.isEqualityEligible() }
 
-        val equalityAssertions = equalityMembers.map {
-            Assertion(it.name, Assertion.Type.EQUALITY, it.invoke(subject))
+        return equalityMembers.map {
+            Assertion(
+                methodName = it.name,
+                type = Assertion.Type.EQUALITY,
+                expectedValue = it.invoke(subject)
+            )
         }
-
-        return equalityAssertions
     }
 
     fun Method.isEqualityEligible(): Boolean {
@@ -30,10 +32,10 @@ class AssertionFinder {
 
 
         return itHasNoParameters
-                && itReturnsVoid.not()
+                && !itReturnsVoid
                 && (itReturnsPrimitive || itReturnsString)
-                && itIsObjectOverriddenMethod.not()
-                && itIsKotlinComponentMethod.not()
+                && !itIsObjectOverriddenMethod
+                && !itIsKotlinComponentMethod
     }
 
 }

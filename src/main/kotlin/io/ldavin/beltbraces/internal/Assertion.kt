@@ -1,4 +1,4 @@
-package io.ldavin.beltbraces
+package io.ldavin.beltbraces.internal
 
 data class Assertion(val methodName: String, val type: Type, val expectedValue: Any? = null) {
 

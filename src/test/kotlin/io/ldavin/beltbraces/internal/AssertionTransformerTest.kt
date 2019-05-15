@@ -1,5 +1,7 @@
-package io.ldavin.beltbraces
+package io.ldavin.beltbraces.internal
 
+import io.ldavin.beltbraces.internal.Assertion
+import io.ldavin.beltbraces.internal.AssertionTransformer
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -9,7 +11,8 @@ class AssertionTransformerTest {
     fun `Transform a nullity assertion`() {
         // GIVEN
         val transformer = AssertionTransformer()
-        val assertion = Assertion("getTomato", Assertion.Type.NULLITY)
+        val assertion =
+            Assertion("getTomato", Assertion.Type.NULLITY)
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -22,7 +25,11 @@ class AssertionTransformerTest {
     fun `Transform an equality assertion for a String`() {
         // GIVEN
         val transformer = AssertionTransformer()
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, "result")
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            "result"
+        )
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -36,7 +43,11 @@ class AssertionTransformerTest {
         // GIVEN
         val transformer = AssertionTransformer()
         val value: Byte = 1
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, value)
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            value
+        )
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -50,7 +61,11 @@ class AssertionTransformerTest {
         // GIVEN
         val transformer = AssertionTransformer()
         val value: Short = 1
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, value)
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            value
+        )
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -64,7 +79,11 @@ class AssertionTransformerTest {
         // GIVEN
         val transformer = AssertionTransformer()
         val value: Int = 123
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, value)
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            value
+        )
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -78,7 +97,11 @@ class AssertionTransformerTest {
         // GIVEN
         val transformer = AssertionTransformer()
         val value: Long = 123
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, value)
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            value
+        )
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -92,7 +115,11 @@ class AssertionTransformerTest {
         // GIVEN
         val transformer = AssertionTransformer()
         val value: Float = 1.1f
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, value)
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            value
+        )
 
         // WHEN
         val result = transformer.transform(assertion)
@@ -107,7 +134,11 @@ class AssertionTransformerTest {
         // GIVEN
         val transformer = AssertionTransformer()
         val value: Double = 1.1
-        val assertion = Assertion("getStuff", Assertion.Type.EQUALITY, value)
+        val assertion = Assertion(
+            "getStuff",
+            Assertion.Type.EQUALITY,
+            value
+        )
 
         // WHEN
         val result = transformer.transform(assertion)

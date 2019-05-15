@@ -1,7 +1,9 @@
-package io.ldavin.beltbraces
+package io.ldavin.beltbraces.internal
 
-import io.ldavin.beltbraces.Assertion.Type.EQUALITY
+import io.ldavin.beltbraces.internal.Assertion.Type.EQUALITY
 import io.ldavin.beltbraces.fixture.*
+import io.ldavin.beltbraces.internal.Assertion
+import io.ldavin.beltbraces.internal.AssertionFinder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -76,7 +78,13 @@ class AssertionFinderTest {
         assertThat(result[4]).isEqualTo(Assertion("getTheFloat", EQUALITY, expectedFloat))
 
         val expectedDouble: Double = 1.2
-        assertThat(result[5]).isEqualTo(Assertion("getTheDouble", EQUALITY, expectedDouble))
+        assertThat(result[5]).isEqualTo(
+            Assertion(
+                "getTheDouble",
+                EQUALITY,
+                expectedDouble
+            )
+        )
 
         assertThat(result[6]).isEqualTo(Assertion("getTheBoolean", EQUALITY, true))
         assertThat(result[7]).isEqualTo(Assertion("getTheChar", EQUALITY, 'd'))
