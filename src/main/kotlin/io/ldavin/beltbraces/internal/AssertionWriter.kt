@@ -1,22 +1,26 @@
 package io.ldavin.beltbraces.internal
 
-import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
-import io.ldavin.beltbraces.exception.NoAssertionFoundException
+internal class AssertionWriter {
 
-class AssertionWriter {
+    fun transform(property: Property): String {
 
-    val transformer = AssertionTransformer()
-
-    fun transformToMessage(assertions: List<Assertion>): String {
-
-        if (assertions.isEmpty()) {
-            throw NoAssertionFoundException()
+        val beginning = "assertThat(result.${property.name})"
+        val end = when (property.expectedValue) {
+            null -> "isNull()"
+            else -> "isEqualTo(${formatValue(property.expectedValue)})"
         }
 
-        val transformedAssertions = assertions.map { transformer.transform(it) }
-        val message = transformedAssertions
-                .joinToString(prefix = "${assertions.size} assertions found!\n\n", separator = "\n")
-        throw FastenYourSeatBeltException(message)
+        return "\t$beginning.$end"
     }
 
+    private fun formatValue(value: Any?): String {
+        return when (value) {
+            is String -> "\"$value\""
+            is Char -> "'$value'"
+            is Long -> "${value}L"
+            is Float -> "${value}f"
+
+            else -> value.toString()
+        }
+    }
 }

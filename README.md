@@ -1,5 +1,8 @@
 # Belt & Braces
 
+[![Build Status](https://travis-ci.org/ldavin/belt-braces.svg?branch=master)](https://travis-ci.org/ldavin/belt-braces)
+[![Code coverage](https://codecov.io/gh/ldavin/belt-braces/branch/master/graph/badge.svg)](https://codecov.io/gh/ldavin/belt-braces)
+
 A time-saver when adding tests on existing code.
 
 This library is currently a work in progress.
@@ -71,9 +74,10 @@ For now, the library prints property-style assertions for every member found tha
 Final goals are much more ambitious and have been specified as executable tests in the files [BeltTest.kt](src/test/kotlin/io/ldavin/beltbraces/BeltTest.kt) and [BeltTestJava.kt](src/test/kotlin/io/ldavin/beltbraces/BeltTestJava.kt).
 
 - [x] POC finding some members to assert things on and printing simple "assertThat(…).isEqualTo(…)" assertions
-- [ ] Exhaustive property assertions for an object not overriding `equals()`
+- [x] Exhaustive property assertions for an object not overriding `equals()`
 - [ ] Object equality assertions for a kotlin class when a suiting constructor is found
 - [ ] Object equality assertions for a java class when a suiting constructor is found (unfortunately unlikely because of parameter names lost at compilation)
+- [ ] Publish library on maven central or jcenter
 - [ ] Java syntax support
 - [ ] Recursive support (eg: if a data-class property returns another data-class)
 - [ ] Support for assertion frameworks other than assertJ and Truth?

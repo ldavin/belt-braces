@@ -42,7 +42,7 @@ class BeltTestJava {
             "If you prefer to assert it property-style:",
             """assertThat(result.getAttribute()).isEqualTo("Hi!");"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -73,7 +73,7 @@ class BeltTestJava {
             """assertThat(result.getEarth()).isEqualTo("Nice");""",
             """assertThat(result.getMars()).isEqualTo("Red");"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -108,7 +108,7 @@ class BeltTestJava {
             "If you prefer to assert it property-style:",
             """assertThat(result.getAttribute()).isEqualTo("Trop bien !");"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -129,7 +129,7 @@ class BeltTestJava {
             "If you prefer to assert it property-style:",
             """assertThat(result.getAttribute()).isEqualTo("Super !");"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -148,7 +148,7 @@ class BeltTestJava {
             "The object does not override `equals()` so it has to be checked field by field:",
             """assertThat(result.getAttribute()).isEqualTo("C't'incroyaaable");"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -165,7 +165,7 @@ class BeltTestJava {
             "The object does not override `equals()` so it has to be checked field by field:",
             """assertThat(result.getMercury()).isEqualTo("Ça m'fais bouger un tabernaacle");"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Test

@@ -37,7 +37,7 @@ class BeltTest {
             "If you prefer to assert it property-style:",
             """assertThat(result.attribute).isEqualTo("Hi!")"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -68,7 +68,7 @@ class BeltTest {
             """assertThat(result.earth).isEqualTo("Nice")""",
             """assertThat(result.mars).isEqualTo("Red")"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -103,7 +103,7 @@ class BeltTest {
             "If you prefer to assert it property-style:",
             """assertThat(result.attribute).isEqualTo("Trop bien !")"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Ignore
@@ -124,16 +124,15 @@ class BeltTest {
             "If you prefer to assert it property-style:",
             """assertThat(result.attribute).isEqualTo("Super !")"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
-    @Ignore
     @Test
     fun `BeltAndBraces should suggest property equality assertions for a kotlin class`() {
         class SubjectClass(val attribute: String)
 
         // GIVEN
-        val testObject = SubjectClass("C't'incroyaaable")
+        val testObject = SubjectClass("Génial")
 
         // WHEN
         catchException { BeltAndBraces.fasten(testObject) }
@@ -141,16 +140,15 @@ class BeltTest {
         // THEN
         val excerpts = listOf(
             "The object does not override `equals()` so it has to be checked field by field:",
-            """assertThat(result.attribute).isEqualTo("C't'incroyaaable")"""
+            """assertThat(result.attribute).isEqualTo("Génial")"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
-    @Ignore
     @Test
     fun `BeltAndBraces should suggest property equality assertions for a java class`() {
         // GIVEN
-        val testObject = JStringMember("Ça m'fais bouger un tabernaacle")
+        val testObject = JStringMember("Superbe")
 
         // WHEN
         catchException { BeltAndBraces.fasten(testObject) }
@@ -158,9 +156,9 @@ class BeltTest {
         // THEN
         val excerpts = listOf(
             "The object does not override `equals()` so it has to be checked field by field:",
-            """assertThat(result.mercury).isEqualTo("Ça m'fais bouger un tabernaacle")"""
+            """assertThat(result.mercury).isEqualTo("Superbe")"""
         )
-        assertThat(caughtException().message).containsSequence(excerpts)
+        assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
     @Test
