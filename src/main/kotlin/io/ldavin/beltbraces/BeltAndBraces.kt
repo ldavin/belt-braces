@@ -2,10 +2,10 @@ package io.ldavin.beltbraces
 
 import io.ldavin.beltbraces.BeltAndBraces.Language.KOTLIN
 import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
-import io.ldavin.beltbraces.internal.AssertionWriter
-import io.ldavin.beltbraces.internal.ExceptionWriter
-import io.ldavin.beltbraces.internal.PropertyFinder
-import io.ldavin.beltbraces.internal.SubjectAnalyser
+import io.ldavin.beltbraces.internal.analysis.PropertyFinder
+import io.ldavin.beltbraces.internal.analysis.SubjectAnalyser
+import io.ldavin.beltbraces.internal.transformation.AssertionWriter
+import io.ldavin.beltbraces.internal.transformation.ExceptionWriter
 
 object BeltAndBraces {
 

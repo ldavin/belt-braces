@@ -1,4 +1,6 @@
-package io.ldavin.beltbraces.internal
+package io.ldavin.beltbraces.internal.transformation
+
+import io.ldavin.beltbraces.internal.Property
 
 internal class AssertionWriter {
 

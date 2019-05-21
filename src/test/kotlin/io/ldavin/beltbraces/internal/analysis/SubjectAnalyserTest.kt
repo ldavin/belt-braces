@@ -1,5 +1,6 @@
-package io.ldavin.beltbraces.internal
+package io.ldavin.beltbraces.internal.analysis
 
+import io.ldavin.beltbraces.internal.Analysis
 import io.ldavin.beltbraces.internal.TestFixtures.property
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test

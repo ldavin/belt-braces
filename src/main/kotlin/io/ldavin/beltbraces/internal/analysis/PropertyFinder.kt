@@ -1,5 +1,6 @@
-package io.ldavin.beltbraces.internal
+package io.ldavin.beltbraces.internal.analysis
 
+import io.ldavin.beltbraces.internal.Property
 import kotlin.reflect.KCallable
 import kotlin.reflect.full.functions
 import kotlin.reflect.full.valueParameters

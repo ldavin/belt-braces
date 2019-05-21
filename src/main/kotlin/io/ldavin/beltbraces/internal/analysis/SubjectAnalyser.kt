@@ -1,4 +1,6 @@
-package io.ldavin.beltbraces.internal
+package io.ldavin.beltbraces.internal.analysis
+
+import io.ldavin.beltbraces.internal.Analysis
 
 internal class SubjectAnalyser(private val propertyFinder: PropertyFinder) {
 
