@@ -33,6 +33,22 @@ class ConstructorWriterTest {
     }
 
     @Test
+    fun `transform prints ??? for an unknown parameter value`() {
+        // GIVEN
+        val constructor = constructor(
+            className = "Friends",
+            unusedProperties = emptyList(),
+            parameters = listOf(parameter(name = "cat", property = null))
+        )
+
+        // WHEN
+        val result = writer.transform(constructor)
+
+        // THEN
+        assertThat(result).startsWith("\tval expected = Friends(???)")
+    }
+
+    @Test
     fun `transform writes a long instantiation and an assertion`() {
         // GIVEN
         val constructor = constructor(
@@ -97,7 +113,7 @@ class ConstructorWriterTest {
         assertThat(result.lines().last())
             .isEqualTo(
                 "/!\\ This constructor takes arguments for which the value could not be guessed " +
-                        """(argument n°1 named "dog")"""
+                        """(arg#1 named "dog")"""
             )
     }
 }

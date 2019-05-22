@@ -69,7 +69,6 @@ class BeltTest {
         assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
-    @Ignore
     @Test
     fun `BeltAndBraces should suggest an object equality assertion for a kotlin class overriding equals`() {
         class SubjectClass(val attribute: String) {
@@ -104,7 +103,6 @@ class BeltTest {
         assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
-    @Ignore
     @Test
     fun `BeltAndBraces should suggest an object equality assertion for a java class overriding equals`() {
         // GIVEN
@@ -117,10 +115,9 @@ class BeltTest {
         val excerpts = listOf(
             "The object to check appears to implement the `equals()` method!",
             "If the `equals()` implementation is correct, assert it object-style (preferred):",
-            """val expected = JStringMemberOverridingEquals("Super !")""",
-            "assertThat(result).isEqualTo(expected)",
+            "/!\\ No constructor automagically found :(",
             "If you prefer to assert it property-style:",
-            """assertThat(result.attribute).isEqualTo("Super !")"""
+            """assertThat(result.venus).isEqualTo("Super !")"""
         )
         assertThat(caughtException().message).containsSubsequence(excerpts)
     }

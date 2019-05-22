@@ -13,13 +13,17 @@ internal class ConstructorWriter {
         if (constructor.parameters.size > 3) {
             stringBuilder.appendln()
             val parameters = constructor.parameters.map {
-                "\t\t${it.name} = ${formatValue(it.correspondingProperty?.expectedValue)}"
+                val value = it.correspondingProperty?.expectedValue ?: UnknownValue()
+                "\t\t${it.name} = ${formatValue(value)}"
             }
             stringBuilder.append(parameters.joinToString(separator = ",\n", postfix = "\n"))
             stringBuilder.append("\t")
 
         } else {
-            val parameters = constructor.parameters.map { formatValue(it.correspondingProperty?.expectedValue) }
+            val parameters = constructor.parameters.map {
+                val value = it.correspondingProperty?.expectedValue ?: UnknownValue()
+                formatValue(value)
+            }
             stringBuilder.append(parameters.joinToString(separator = ", "))
         }
 
@@ -40,7 +44,7 @@ internal class ConstructorWriter {
 
             val details = constructor.parameters.mapIndexed { i, it ->
                 if (it.correspondingProperty != null) return@mapIndexed null
-                """argument n°${i + 1} named "${it.name}""""
+                """arg#${i + 1} named "${it.name}""""
             }.filterNotNull()
             stringBuilder.append(details.joinToString(prefix = "(", separator = ", ", postfix = ")"))
         }
