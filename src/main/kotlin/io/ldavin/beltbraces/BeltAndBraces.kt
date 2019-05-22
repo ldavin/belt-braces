@@ -2,9 +2,12 @@ package io.ldavin.beltbraces
 
 import io.ldavin.beltbraces.BeltAndBraces.Language.KOTLIN
 import io.ldavin.beltbraces.exception.FastenYourSeatBeltException
+import io.ldavin.beltbraces.internal.analysis.Analyser
+import io.ldavin.beltbraces.internal.analysis.ConstructorFinder
+import io.ldavin.beltbraces.internal.analysis.PartialAnalyser
 import io.ldavin.beltbraces.internal.analysis.PropertyFinder
-import io.ldavin.beltbraces.internal.analysis.SubjectAnalyser
-import io.ldavin.beltbraces.internal.transformation.AssertionWriter
+import io.ldavin.beltbraces.internal.transformation.PropertyWriter
+import io.ldavin.beltbraces.internal.transformation.ConstructorWriter
 import io.ldavin.beltbraces.internal.transformation.ExceptionWriter
 
 object BeltAndBraces {
@@ -16,8 +19,8 @@ object BeltAndBraces {
      */
     var language: Language = KOTLIN
 
-    private val analyser = SubjectAnalyser(PropertyFinder())
-    private val writer = ExceptionWriter(AssertionWriter())
+    private val analyser = Analyser(PropertyFinder(), ConstructorFinder(), PartialAnalyser())
+    private val writer = ExceptionWriter(PropertyWriter(), ConstructorWriter())
 
     fun fasten(testObject: Any) {
         val analysis = analyser.analyse(testObject)

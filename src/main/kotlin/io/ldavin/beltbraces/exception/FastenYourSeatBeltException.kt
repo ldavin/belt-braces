@@ -1,3 +1,3 @@
 package io.ldavin.beltbraces.exception
 
-class FastenYourSeatBeltException(message: String) : Exception(message)
+class FastenYourSeatBeltException(override val message: String?) : Exception()

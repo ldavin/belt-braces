@@ -25,11 +25,12 @@ class ConstructorFinderTest {
 
         // THEN
         val expectedConstructor = Constructor(
-            listOf(
+            className = "Subject",
+            parameters = listOf(
                 Parameter("stuff", property1),
                 Parameter("things", property2)
             ),
-            emptyList()
+            unusedProperties = emptyList()
         )
 
         assertThat(constructors).hasSize(1)
@@ -53,8 +54,9 @@ class ConstructorFinderTest {
 
         // THEN
         val expectedConstructor = Constructor(
-            listOf(Parameter("stuff", property1)),
-            listOf(property2)
+            className = "Subject",
+            parameters = listOf(Parameter("stuff", property1)),
+            unusedProperties = listOf(property2)
         )
 
         assertThat(constructors).hasSize(1)

@@ -4,9 +4,9 @@ import io.ldavin.beltbraces.internal.Property
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class AssertionWriterTest {
+class PropertyWriterTest {
 
-    private val writer = AssertionWriter()
+    private val writer = PropertyWriter()
 
     @Test
     fun `transform a nullity assertion`() {

@@ -21,7 +21,7 @@ internal class ConstructorFinder {
                 val usedProperties = parameters.mapNotNull { it.correspondingProperty }
                 val unusedProperties = properties.filterNot { usedProperties.contains(it) }
 
-                Constructor(parameters, unusedProperties)
+                Constructor(subject::class.simpleName!!, parameters, unusedProperties)
             }
             .filter {
                 it.unusedProperties.count() < properties.count()

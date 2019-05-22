@@ -17,7 +17,6 @@ class BeltTest {
      *  whether checking on Kotlin or Java classes
      */
 
-    @Ignore
     @Test
     fun `BeltAndBraces should suggest an object equality assertion for a kotlin data class`() {
         data class SubjectClass(val attribute: String)
@@ -40,7 +39,6 @@ class BeltTest {
         assertThat(caughtException().message).containsSubsequence(excerpts)
     }
 
-    @Ignore
     @Test
     fun `BeltAndBraces should suggest an object equality assertion with named arguments for a large kotlin data class`() {
         data class SubjectClass(val mercury: String, val venus: String, val earth: String, val mars: String)
@@ -63,10 +61,10 @@ class BeltTest {
             ")",
             "assertThat(result).isEqualTo(expected)",
             "If you prefer to assert it property-style:",
-            """assertThat(result.mercury).isEqualTo("Hot!")""",
-            """assertThat(result.venus).isEqualTo("Also hot")""",
             """assertThat(result.earth).isEqualTo("Nice")""",
-            """assertThat(result.mars).isEqualTo("Red")"""
+            """assertThat(result.mars).isEqualTo("Red")""",
+            """assertThat(result.mercury).isEqualTo("Hot!")""",
+            """assertThat(result.venus).isEqualTo("Also hot")"""
         )
         assertThat(caughtException().message).containsSubsequence(excerpts)
     }
